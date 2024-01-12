@@ -1,3 +1,3 @@
-# Team : #Es Teh Anget
+# Team : Es Teh Anget
 # Aplikasi : banksampah
  
