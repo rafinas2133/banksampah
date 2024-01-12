@@ -1,6 +1,6 @@
 import 'package:bank_sampah/models/myuser.dart';
 import 'package:bank_sampah/screens/authenticate/authenticate.dart';
-import 'package:bank_sampah/screens/home/home.dart';
+import 'package:bank_sampah/screens/home/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,7 @@ class Wrapper extends StatelessWidget {
     if(user == null){
       return Authenticate();
     }else {
-      return Home();
+      return Navbar();
     }
   }
 }

@@ -44,7 +44,7 @@ class _RegisterState extends State<Register> {
                   height: 50.0,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/bank_sampah_logo.jpeg'), // Gantilah dengan path gambar logo Anda
+                      image: AssetImage('assets/bank_sampah_logo.png'), // Gantilah dengan path gambar logo Anda
                       fit: BoxFit.contain,
                     ),
                   ),
