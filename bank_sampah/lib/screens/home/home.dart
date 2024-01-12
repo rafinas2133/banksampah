@@ -1,5 +1,6 @@
 import 'package:bank_sampah/models/myuser.dart';
 import 'package:bank_sampah/services/database.dart';
+import 'package:bank_sampah/shared/card_button.dart';
 import 'package:bank_sampah/shared/icon_button_sub.dart';
 import 'package:bank_sampah/shared/loading.dart';
 import 'package:flutter/material.dart';
@@ -199,11 +200,35 @@ class _HomeState extends State<Home> {
                   Text(
                     'Kamu Lagi butuh apa ni',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.green,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold
                     ),
-                  )
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          CardButton(
+                            title: 'title', 
+                            subtitle: 'subtittle', 
+                            onTap: () {}
+                          ),
+                          CardButton(
+                            title: 'title', 
+                            subtitle: 'subtittle', 
+                            onTap: () {}
+                          ),
+                          CardButton(
+                            title: 'title', 
+                            subtitle: 'subtittle', 
+                            onTap: () {}
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
