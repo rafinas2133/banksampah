@@ -1,14 +1,31 @@
 # Team : Es Teh Anget
+
+Asti Syafitri - Hustler
+
+Firman Maulana - Hacker
+
+Zidan Rafi Nasrullah - Hacker
+
+Farhan Rahmansyah - Hipster
+
 # Aplikasi : banksampah
+Develeop aplikasi banksampah ini menggunakan Flutter dan Firebase.
+Implementasi yang sudah kami lakukan antara lain, Login ,Register , Homepage dan Profilpage.
 
 # Login page
 
-![login](https://github.com/rafinas2133/banksampah/assets/90997180/a665f699-3e65-4e05-8877-33605734dc3f)
+![login](https://github.com/rafinas2133/banksampah/assets/90997180/c0e491ce-cafc-4568-ad70-22c44e174741)
 
 # Sign Up Page
 
-![sign up](https://github.com/rafinas2133/banksampah/assets/90997180/36c9db8f-cec1-4640-85ba-c1e22d44a611)
+![register](https://github.com/rafinas2133/banksampah/assets/90997180/8d744096-fbb8-419e-b62c-bf1451daa7ae)
 
 # Home Page
 
-![home](https://github.com/rafinas2133/banksampah/assets/90997180/e4919949-d871-4e08-a5cb-a7b8e3d26260)
+![home](https://github.com/rafinas2133/banksampah/assets/90997180/dfdf9894-c2f9-4c86-aa63-26a5f9ad3504)
+
+# Profile Page
+
+![profile](https://github.com/rafinas2133/banksampah/assets/90997180/e0662fda-c804-47db-8da7-8efb44fc1b5c)
+
+
