@@ -34,9 +34,12 @@ class _NavbarState extends State<Navbar> {
           // misalnya, jika _currentIndex == 3
         },
         items: [
-          Icon(Icons.home, color: Colors.white,),
+          Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
           Icon(Icons.recycling, color: Colors.white),
-          Icon(Icons.paste, color: Colors.white),
+          Icon(Icons.history, color: Colors.white),
           Icon(Icons.person, color: Colors.white),
         ],
       ),
@@ -60,4 +63,3 @@ class _NavbarState extends State<Navbar> {
     }
   }
 }
-
