@@ -9,7 +9,7 @@ Zidan Rafi Nasrullah - Hacker
 Farhan Rahmansyah - Hipster
 
 # Aplikasi : banksampah
-Develeop aplikasi banksampah ini menggunakan Flutter dan Firebase.
+Develop aplikasi banksampah ini menggunakan Flutter dan Firebase.
 Implementasi yang sudah kami lakukan antara lain, Login ,Register , Homepage dan Profilpage.
 
 # Login page
