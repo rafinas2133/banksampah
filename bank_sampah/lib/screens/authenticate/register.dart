@@ -41,7 +41,7 @@ class _RegisterState extends State<Register> {
                 // Gambar Logo
                 Container(
                   width: 450.0,
-                  height: 50.0,
+                  height: 100.0,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/bank_sampah_logo.png'), // Gantilah dengan path gambar logo Anda
@@ -49,7 +49,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 1.0),
             
                 Text(
                   'SIGN UP',
@@ -59,7 +59,7 @@ class _RegisterState extends State<Register> {
                     fontWeight: FontWeight.bold
                   ),
                 ),
-            
+                SizedBox(height: 5,),
                 // Input Nama
                 TextFormField(
                   decoration: textInputDecoration.copyWith(labelText: 'Full Name'),
@@ -192,7 +192,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                 ),
-            
+                SizedBox(height: 10,)
             
               ],
             ),
