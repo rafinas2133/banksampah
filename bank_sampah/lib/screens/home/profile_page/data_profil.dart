@@ -30,97 +30,100 @@ class _DataProfileState extends State<DataProfile> {
         if(snapshot.hasData){
 
           UserData? userData = snapshot.data;
-          return SafeArea(
-            child: Scaffold(
-              body: Column(
-                children: [
-                  // Freeze Container
-                  Container(
-                    height: 180,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 98, 184, 101),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20.0),
-                        bottomRight: Radius.circular(20.0),
-                      ),
-                    ),
-                    child: Center(
-                      child: Column(
-                        children: [
-                          Text(
-                            'Data Profile',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold
-                            ),
-                          ),
-                          CircleAvatar(
-                            radius: 50,
-                            child: Icon(
-                              Icons.person,
-                              size: 100,
-                            ),
-                          ),
-                          SizedBox(height: 5,),
-                          Text(
-                            '${userData?.userName}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold
-                            ),
-                          ),
-                        ],
-                      ),
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Color.fromARGB(255, 98, 184, 101),
+              foregroundColor: Colors.white,
+              title: Text(
+                'Data Profile',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+              centerTitle: true,
+            ),
+            body: Column(
+              children: [
+                // Freeze Container
+                Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 98, 184, 101),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20.0),
+                      bottomRight: Radius.circular(20.0),
                     ),
                   ),
-                  SizedBox(height: 5,),
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
+                  child: Center(
                     child: Column(
                       children: [
-                        ProfileField(
-                          icon: Icons.person,
-                          label: 'Nama Lengkap',
-                          initialValue: '${userData?.fullName}',
-                          onChanged: (newValue) {
-                            // Lakukan sesuatu dengan nilai yang diubah
-                            print('Nama Lengkap diubah menjadi: $newValue');
-                          },
+                        CircleAvatar(
+                          radius: 50,
+                          child: Icon(
+                            Icons.person,
+                            size: 100,
+                          ),
                         ),
-                        ProfileField(
-                          icon: Icons.phone,
-                          label: 'No Handphone',
-                          initialValue: '${userData?.noHp}',
-                          onChanged: (newValue) {
-                            // Lakukan sesuatu dengan nilai yang diubah
-                            print('No Handphone diubah menjadi: $newValue');
-                          },
-                        ),
-                        ProfileField(
-                          icon: Icons.email,
-                          label: 'Email',
-                          initialValue: '${userData?.email}',
-                          onChanged: (newValue) {
-                            // Lakukan sesuatu dengan nilai yang diubah
-                            print('Email diubah menjadi: $newValue');
-                          },
-                        ),
-                        ProfileField(
-                          icon: Icons.location_on,
-                          label: 'Alamat',
-                          initialValue: '${userData?.address}',
-                          onChanged: (newValue) {
-                            // Lakukan sesuatu dengan nilai yang diubah
-                            print('Alamat diubah menjadi: $newValue');
-                          },
+                        SizedBox(height: 5,),
+                        Text(
+                          '${userData?.userName}',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold
+                          ),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+                SizedBox(height: 5,),
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      ProfileField(
+                        icon: Icons.person,
+                        label: 'Nama Lengkap',
+                        initialValue: '${userData?.fullName}',
+                        onChanged: (newValue) {
+                          // Lakukan sesuatu dengan nilai yang diubah
+                          print('Nama Lengkap diubah menjadi: $newValue');
+                        },
+                      ),
+                      ProfileField(
+                        icon: Icons.phone,
+                        label: 'No Handphone',
+                        initialValue: '${userData?.noHp}',
+                        onChanged: (newValue) {
+                          // Lakukan sesuatu dengan nilai yang diubah
+                          print('No Handphone diubah menjadi: $newValue');
+                        },
+                      ),
+                      ProfileField(
+                        icon: Icons.email,
+                        label: 'Email',
+                        initialValue: '${userData?.email}',
+                        onChanged: (newValue) {
+                          // Lakukan sesuatu dengan nilai yang diubah
+                          print('Email diubah menjadi: $newValue');
+                        },
+                      ),
+                      ProfileField(
+                        icon: Icons.location_on,
+                        label: 'Alamat',
+                        initialValue: '${userData?.address}',
+                        onChanged: (newValue) {
+                          // Lakukan sesuatu dengan nilai yang diubah
+                          print('Alamat diubah menjadi: $newValue');
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           );
         } else {

@@ -26,10 +26,12 @@ class _JsampahState extends State<Jsampah> {
                 Cartsampah(
                   title: 'Plastik',
                   imageas: 'asset/download.jpeg',
+                  ontap: () {},
                 ),
                 Cartsampah(
                   title: 'Kertas',
                   imageas: 'asset/kertas.jpeg',
+                  ontap: () {}
                 )
               ],
             ),
@@ -40,10 +42,12 @@ class _JsampahState extends State<Jsampah> {
                 Cartsampah(
                   title: 'Kaleng',
                   imageas: 'asset/kaleng.jpg',
+                  ontap: () {}
                 ),
                 Cartsampah(
                   title: 'Botol',
                   imageas: 'asset/botol.jpeg',
+                  ontap: () {}
                 )
               ],
             ),
@@ -55,6 +59,7 @@ class _JsampahState extends State<Jsampah> {
                 Cartsampah(
                   title: 'Besi',
                   imageas: 'asset/besi.jpeg',
+                  ontap: () {}
                 ),
               ],
             ),
