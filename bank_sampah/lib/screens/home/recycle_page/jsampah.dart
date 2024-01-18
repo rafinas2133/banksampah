@@ -9,6 +9,11 @@ class Jsampah extends StatefulWidget {
 }
 
 class _JsampahState extends State<Jsampah> {
+  void selectsampah (String sampah)async{
+    Navigator.pop(context, {
+      sampah:'sampah'
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +30,19 @@ class _JsampahState extends State<Jsampah> {
               children: [
                 Cartsampah(
                   title: 'Plastik',
-                  imageas: 'asset/download.jpeg',
-                  ontap: () {},
+                  imageas: 'assets/download.jpeg',
+                  ontap: () {
+                    setState(() {
+                      selectsampah('Plastik');
+                    });
+                  },
                 ),
                 Cartsampah(
                   title: 'Kertas',
-                  imageas: 'asset/kertas.jpeg',
-                  ontap: () {}
+                  imageas: 'assets/kertas.jpeg',
+                  ontap: () {
+                    selectsampah('Kertas');
+                  }
                 )
               ],
             ),
@@ -41,13 +52,17 @@ class _JsampahState extends State<Jsampah> {
               children: [
                 Cartsampah(
                   title: 'Kaleng',
-                  imageas: 'asset/kaleng.jpg',
-                  ontap: () {}
+                  imageas: 'assets/kaleng.jpg',
+                  ontap: () {
+                    selectsampah('Kaleng');
+                  }
                 ),
                 Cartsampah(
                   title: 'Botol',
-                  imageas: 'asset/botol.jpeg',
-                  ontap: () {}
+                  imageas: 'assets/botol.jpeg',
+                  ontap: () {
+                    selectsampah('Botol');
+                  }
                 )
               ],
             ),
@@ -58,8 +73,10 @@ class _JsampahState extends State<Jsampah> {
                 SizedBox(width: 30.0),
                 Cartsampah(
                   title: 'Besi',
-                  imageas: 'asset/besi.jpeg',
-                  ontap: () {}
+                  imageas: 'assets/besi.jpeg',
+                  ontap: () {
+                    selectsampah('Besi');
+                  }
                 ),
               ],
             ),

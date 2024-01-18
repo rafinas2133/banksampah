@@ -1,20 +1,27 @@
+import 'package:bank_sampah/screens/home/recycle_page/jsampah.dart';
 import 'package:flutter/material.dart';
 
 class Recycling extends StatefulWidget {
   const Recycling({super.key});
+  
+
 
   @override
   State<Recycling> createState() => _RecyclingState();
 }
 
 class _RecyclingState extends State<Recycling> {
+  Map datasampah = {};
   final List<String> berat = ['1-2', '3-4', '5-6'];
-  final List<String> sampah = ['Plastik', 'Besi', 'Dildo'];
+  
   String? _currentBerat;
   String? _currentSampah;
-
+ 
   @override
   Widget build(BuildContext context) {
+    datasampah = datasampah.isNotEmpty ? datasampah : (ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>?) ?? {};
+    _currentSampah = datasampah['sampah'];
+    print('jenis:$_currentSampah');
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Recycle')),
@@ -34,9 +41,18 @@ class _RecyclingState extends State<Recycling> {
                   child: Column(
                     children: [
                       Card(
-                        child: DropdownButtonFormField(
+                        child: TextField(
+                          onTap: () async {
+                            dynamic result = await Navigator.push(context, MaterialPageRoute(builder: (context)=>Jsampah()));
+                              setState(() {
+                                datasampah = {
+                                  'sampah': result['sampah'],
+                                };
+                            });
+                          },
+                          readOnly: true,
                           decoration: InputDecoration(
-                            hintText: 'Pilih jenis sampah',
+                            hintText: _currentSampah,
                             fillColor: Colors.white,
                             filled: true,
                             enabledBorder: OutlineInputBorder(
@@ -46,12 +62,6 @@ class _RecyclingState extends State<Recycling> {
                             borderSide: BorderSide(color: Colors.lightGreen, width: 2.0)
                           ),
                           ),
-                          items: sampah.map((sampah) {
-                            return DropdownMenuItem(
-                              value: sampah,
-                              child: Text('$sampah'),
-                            );
-                          }).toList(),
                           onChanged: (val) => setState(() => _currentSampah = val),
                         ),
                       )
@@ -99,7 +109,6 @@ class _RecyclingState extends State<Recycling> {
                         child: TextFormField(
                           decoration: InputDecoration(
                             hintText: 'Upload foto sampah anda',
-                            // suffixIcon: imah,
                             fillColor: Colors.white,
                             filled: true,
                             enabledBorder: OutlineInputBorder(
