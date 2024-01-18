@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 
 class Recycling extends StatefulWidget {
   const Recycling({super.key});
-  
-
-
   @override
   State<Recycling> createState() => _RecyclingState();
 }
@@ -48,7 +45,7 @@ class _RecyclingState extends State<Recycling> {
                                 datasampah = {
                                   'sampah': result['sampah'],
                                 };
-                            });
+                              });
                           },
                           readOnly: true,
                           decoration: InputDecoration(
