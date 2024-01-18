@@ -109,7 +109,6 @@ class _RecyclingState extends State<Recycling> {
                         child: TextFormField(
                           decoration: InputDecoration(
                             hintText: 'Upload foto sampah anda',
-                            // suffixIcon: imah,
                             fillColor: Colors.white,
                             filled: true,
                             enabledBorder: OutlineInputBorder(
