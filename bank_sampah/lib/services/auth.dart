@@ -48,13 +48,7 @@ class AuthService{
       User? user = result.user;
 
       //create a new doc for the user
-      await DatabaseService(uid: user!.uid).updateUserData(
-        fullName: fullName, 
-        userName: userName, 
-        noHp: noHp, 
-        email: email, 
-        address: address
-        );
+      await DatabaseService(uid: user!.uid).updateUserData(fullName, userName, noHp, email, address);
       return _userFromFireBase(user);
     } catch (e) {
       print(e.toString());

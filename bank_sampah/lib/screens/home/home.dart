@@ -207,11 +207,41 @@ class _HomeState extends State<Home> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        IconButtonSub(text: 'test', onTap: () {}),
-                        IconButtonSub(text: 'test', onTap: () {}),
-                        IconButtonSub(text: 'test', onTap: () {}),
-                        IconButtonSub(text: 'test', onTap: () {}),
-                        IconButtonSub(text: 'test', onTap: () {}),
+                        IconButtonSub(
+                          text: 'Tagihan',
+                          subtext: 'listrik', 
+                          onTap: () {}, 
+                          icon: Icons.electric_meter_sharp,
+                          iconColor: Colors.blue[900],
+                          ),
+                        IconButtonSub(
+                          text: 'Tagihan', 
+                          subtext: 'PDAM',
+                          onTap: () {}, 
+                          icon: Icons.water_drop_rounded,
+                          iconColor: Colors.blue[300]
+                          ),
+                        IconButtonSub(
+                          text: 'Isi ulang',
+                          subtext: 'pulsa', 
+                          onTap: () {}, 
+                          icon: Icons.phonelink_ring,
+                          iconColor: Colors.green[600]
+                          ),
+                        IconButtonSub(
+                          text: 'Kuota',
+                          subtext: 'internet', 
+                          onTap: () {}, 
+                          icon: Icons.wifi,
+                          iconColor: Colors.greenAccent[400]
+                          ),
+                        IconButtonSub(
+                          text: 'Top-up',
+                          subtext: 'e-money', 
+                          onTap: () {}, 
+                          icon: Icons.attach_money_sharp,
+                          iconColor: Colors.yellow[900]
+                          ),
                       ],
                     ),
                     SizedBox(
@@ -230,12 +260,12 @@ class _HomeState extends State<Home> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             CardButton(
-                                title: 'title',
-                                subtitle: 'subtittle',
+                                title: 'Bank',
+                                subtitle: 'Sampah',
                                 onTap: () {}),
                             CardButton(
-                                title: 'title',
-                                subtitle: 'subtittle',
+                                title: 'Fasilitas',
+                                subtitle: 'Kebersihan',
                                 onTap: () {}),
                             CardButton(
                                 title: 'Daftar',

@@ -35,10 +35,10 @@ class _CardButtonState extends State<CardButton> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8.0),
+              SizedBox(height: 2.0),
               Text(
                 widget.subtitle,
-                style: TextStyle(fontSize: 16.0),
+                style: TextStyle(fontSize: 14.0),
               ),
             ],
           ),

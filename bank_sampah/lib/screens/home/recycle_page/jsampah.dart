@@ -11,7 +11,7 @@ class Jsampah extends StatefulWidget {
 class _JsampahState extends State<Jsampah> {
   void selectsampah (String sampah)async{
     Navigator.pop(context, {
-      sampah:'sampah'
+      'sampah': sampah
     });
   }
   @override

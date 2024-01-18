@@ -132,9 +132,11 @@ class _DataProfileState extends State<DataProfile> {
                       if (isUpdating) {
                         setState(() => loading = true,);
                         await DatabaseService(uid: user?.uid).updateUserData(
-                            fullName: fullName,
-                            noHp: noHp,
-                            address: address
+                            fullName == null ? userData?.fullName : fullName, 
+                            userData?.userName, 
+                            noHp == null ? userData?.noHp : noHp, 
+                            userData?.email, 
+                            address == null ? userData?.address : address
                         );
                       }
                       setState(() => loading =false,);

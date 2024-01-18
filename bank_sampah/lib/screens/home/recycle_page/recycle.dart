@@ -1,5 +1,8 @@
 import 'package:bank_sampah/screens/home/recycle_page/jsampah.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
+
 
 class Recycling extends StatefulWidget {
   const Recycling({super.key});
@@ -19,9 +22,10 @@ class _RecyclingState extends State<Recycling> {
  
   @override
   Widget build(BuildContext context) {
+
     datasampah = datasampah.isNotEmpty ? datasampah : (ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>?) ?? {};
     _currentSampah = datasampah['sampah'];
-    print('jenis:$_currentSampah');
+  
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Recycle')),
@@ -52,7 +56,7 @@ class _RecyclingState extends State<Recycling> {
                           },
                           readOnly: true,
                           decoration: InputDecoration(
-                            hintText: _currentSampah,
+                            hintText: _currentSampah == null ? 'Pilih sampah' : _currentSampah ,
                             fillColor: Colors.white,
                             filled: true,
                             enabledBorder: OutlineInputBorder(
@@ -112,12 +116,32 @@ class _RecyclingState extends State<Recycling> {
                             fillColor: Colors.white,
                             filled: true,
                             enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green, width: 2.0)
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green, width: 2.0)
-                          ),
-                          suffixIcon: Icon(Icons.camera_alt)
+                              borderSide: BorderSide(color: Colors.green, width: 2.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.green, width: 2.0),
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(Icons.camera_alt),
+                              onPressed: () async {
+                                // Request camera permission
+                                var status = await Permission.camera.request();
+
+                                if (status.isGranted) {
+                                  final ImagePicker _picker = ImagePicker();
+                                  final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+
+                                  if (image != null) {
+                                    // Handle the image, you can save it or display it in the UI
+                                    // For now, just print the image path
+                                    print('Image Path: ${image.path}');
+                                  }
+                                } else {
+                                  // Handle permission denied
+                                  print('Camera permission denied');
+                                }
+                              },
+                            ),
                           ),
                         ),
                       )
