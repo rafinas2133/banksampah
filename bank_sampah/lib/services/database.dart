@@ -8,16 +8,17 @@ class DatabaseService {
   //collection reference
   final CollectionReference profileCollection = FirebaseFirestore.instance.collection('profile');
 
-  Future updateUserData(String? fullName, String?userName, String? noHp, String? email, String? address) async {
+  Future updateUserData({String? fullName, String?userName, String? noHp, String? email, String? address}) async {
 
-    return profileCollection.doc(uid).set({
-      'email' : email,
-      'fullName' : fullName,
-      'userName' : userName,
-      'noHp' : noHp,
-      'address' : address
-      
-    });
+    Map<String, dynamic> dataToUpdate = {
+    if (email != null) 'email': email,
+    if (fullName != null) 'fullName': fullName,
+    if (userName != null) 'userName': userName,
+    if (noHp != null) 'noHp': noHp,
+    if (address != null) 'address': address,
+  };
+
+  return profileCollection.doc(uid).update(dataToUpdate);
 
   }
 

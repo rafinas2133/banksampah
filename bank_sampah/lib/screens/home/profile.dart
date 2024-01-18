@@ -119,9 +119,9 @@ class _ProfileState extends State<Profile> {
                           color: Color.fromARGB(255, 98, 184, 101),
                           child: Column(
                             children: [
-                              CardProfileSetting(text: 'Data Profil', onTap: () {}),
-                              CardProfileSetting(text: 'Notifikasi', onTap: () {}),
-                              CardProfileSetting(text: 'Bahasa', onTap: () {}),
+                              CardProfileSetting(text: 'F.A.Q', onTap: () {}),
+                              CardProfileSetting(text: 'Pusat Bantuan', onTap: () {}),
+                              CardProfileSetting(text: 'Tentang Aplikasi', onTap: () {}),
                             ],
                           ),
                         ),

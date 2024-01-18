@@ -16,15 +16,18 @@ class DataProfile extends StatefulWidget {
 class _DataProfileState extends State<DataProfile> {
 
   final AuthService _auth = AuthService();
-  String? userName;
   String? fullName;
+  String? noHp;
+  String? address;
+  bool isUpdating = false;
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
 
     final user = Provider.of<MyUsers?>(context);
 
-    return StreamBuilder<UserData>(
+    return loading ? Loading() : StreamBuilder<UserData>(
       stream: DatabaseService(uid: user?.uid).userData,
       builder: (context, snapshot) {
         if(snapshot.hasData){
@@ -44,86 +47,119 @@ class _DataProfileState extends State<DataProfile> {
               ),
               centerTitle: true,
             ),
-            body: Column(
-              children: [
-                // Freeze Container
-                Container(
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 98, 184, 101),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20.0),
-                      bottomRight: Radius.circular(20.0),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // Freeze Container
+                  Container(
+                    height: 150,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 98, 184, 101),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20.0),
+                        bottomRight: Radius.circular(20.0),
+                      ),
+                    ),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            radius: 50,
+                            child: Icon(
+                              Icons.person,
+                              size: 100,
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+                          Text(
+                            '${userData?.userName}',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  child: Center(
+                  SizedBox(height: 5,),
+                  Padding(
+                    padding: EdgeInsets.all(16.0),
                     child: Column(
                       children: [
-                        CircleAvatar(
-                          radius: 50,
-                          child: Icon(
-                            Icons.person,
-                            size: 100,
-                          ),
+                        ProfileField(
+                          icon: Icons.person,
+                          label: 'Nama Lengkap',
+                          initialValue: '${userData?.fullName}',
+                          isUpdating: isUpdating,
+                          onChanged: (newValue) {
+                            setState(() => fullName = newValue,);
+                          },
                         ),
-                        SizedBox(height: 5,),
-                        Text(
-                          '${userData?.userName}',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold
-                          ),
+                        ProfileField(
+                          icon: Icons.phone,
+                          label: 'No Handphone',
+                          initialValue: '${userData?.noHp}',
+                          isUpdating: isUpdating,
+                          onChanged: (newValue) {
+                            setState(() => noHp = newValue,);
+                          },
+                        ),
+                        ProfileField(
+                          icon: Icons.email,
+                          label: 'Email',
+                          initialValue: '${userData?.email}',
+                          isUpdating: false,
+                          onChanged: (newValue) {
+                            
+                          },
+                        ),
+                        ProfileField(
+                          icon: Icons.location_on,
+                          label: 'Alamat',
+                          initialValue: '${userData?.address}',
+                          isUpdating: isUpdating,
+                          onChanged: (newValue) {
+                            setState(() => address = newValue,);
+                          },
                         ),
                       ],
                     ),
                   ),
-                ),
-                SizedBox(height: 5,),
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      ProfileField(
-                        icon: Icons.person,
-                        label: 'Nama Lengkap',
-                        initialValue: '${userData?.fullName}',
-                        onChanged: (newValue) {
-                          // Lakukan sesuatu dengan nilai yang diubah
-                          print('Nama Lengkap diubah menjadi: $newValue');
-                        },
+                  ElevatedButton(
+                    onPressed: () async {
+                      if (isUpdating) {
+                        setState(() => loading = true,);
+                        await DatabaseService(uid: user?.uid).updateUserData(
+                            fullName: fullName,
+                            noHp: noHp,
+                            address: address
+                        );
+                      }
+                      setState(() => loading =false,);
+                      setState(() {
+                        isUpdating = !isUpdating;
+                      });
+                    },
+                    child: Text(
+                      isUpdating ? 'Done' : 'Update Profile',
+                      style: TextStyle(
+                        color: Colors.white
                       ),
-                      ProfileField(
-                        icon: Icons.phone,
-                        label: 'No Handphone',
-                        initialValue: '${userData?.noHp}',
-                        onChanged: (newValue) {
-                          // Lakukan sesuatu dengan nilai yang diubah
-                          print('No Handphone diubah menjadi: $newValue');
-                        },
+                    ),
+                    style: ButtonStyle(
+                      fixedSize: MaterialStateProperty.all(
+                        Size(200, 30.0), // Sesuaikan lebar dan tinggi sesuai kebutuhan
                       ),
-                      ProfileField(
-                        icon: Icons.email,
-                        label: 'Email',
-                        initialValue: '${userData?.email}',
-                        onChanged: (newValue) {
-                          // Lakukan sesuatu dengan nilai yang diubah
-                          print('Email diubah menjadi: $newValue');
-                        },
-                      ),
-                      ProfileField(
-                        icon: Icons.location_on,
-                        label: 'Alamat',
-                        initialValue: '${userData?.address}',
-                        onChanged: (newValue) {
-                          // Lakukan sesuatu dengan nilai yang diubah
-                          print('Alamat diubah menjadi: $newValue');
-                        },
-                      ),
-                    ],
+                      shadowColor: MaterialStateProperty.all(Colors.white),
+                      overlayColor: MaterialStateProperty.all(Colors.green),
+                      backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 99, 157, 100)),
+                      surfaceTintColor: MaterialStateProperty.all(Colors.white)
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         } else {

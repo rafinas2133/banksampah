@@ -4,6 +4,7 @@ class ProfileField extends StatefulWidget {
   final IconData icon;
   final String label;
   final String initialValue;
+  final bool isUpdating;
   final void Function(String)? onChanged;
 
   const ProfileField({
@@ -12,6 +13,7 @@ class ProfileField extends StatefulWidget {
     required this.label,
     required this.initialValue,
     this.onChanged,
+    required this.isUpdating
   }) : super(key: key);
 
   @override
@@ -20,6 +22,7 @@ class ProfileField extends StatefulWidget {
 
 class _ProfileFieldState extends State<ProfileField> {
   late TextEditingController _controller;
+  bool isEditing = false;
 
   @override
   void initState() {
@@ -31,14 +34,30 @@ class _ProfileFieldState extends State<ProfileField> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextFormField(
-        readOnly: true,
-        decoration: InputDecoration(
-          prefixIcon: Icon(widget.icon),
-          labelText: widget.label,
-        ),
-        initialValue: widget.initialValue,
-        onChanged: widget.onChanged,
+      child: Row(
+        children: [
+          Expanded(
+            child: TextFormField(
+              readOnly: !isEditing,
+              autofocus: !isEditing,
+              controller: _controller,
+              decoration: InputDecoration(
+                prefixIcon: Icon(widget.icon),
+                labelText: widget.label,
+              ),
+              onChanged: widget.onChanged,
+            ),
+          ),
+          if (widget.isUpdating)
+            IconButton(
+              icon: Icon(isEditing ? Icons.arrow_upward : Icons.arrow_forward),
+              onPressed: () {
+                setState(() {
+                  isEditing = !isEditing;
+                });
+              },
+            ),
+        ],
       ),
     );
   }
