@@ -4,20 +4,20 @@ class Cartsampah extends StatefulWidget {
   final String title;
   final String imageas;
   final void Function() ontap;
-  const Cartsampah({super.key,required this.title,required this.imageas,required this.ontap});
+  const Cartsampah({super.key,required this.title,required this.imageas,required this.ontap,});
   
 
   @override
   State<Cartsampah> createState() => _CartsampahState();
+  
 }
-
 class _CartsampahState extends State<Cartsampah> {
+  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.ontap,
       child: Container(
-        
         height: 150,
         width: 150,
         child: Card(
